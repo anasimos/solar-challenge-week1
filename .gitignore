@@ -7,3 +7,5 @@ pycache/
 *.pyc
 *.log
 .DS_Store
+.vscode/
+__pycache__/
