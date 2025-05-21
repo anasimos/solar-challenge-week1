@@ -10,7 +10,7 @@ current_notebook_dir = os.path.dirname(os.path.abspath(__file__))
 project_root_dir = os.path.join(current_notebook_dir, '..') # Go up to 'solar-challenge-week1/'
 sys.path.insert(0, project_root_dir)
 
-def clean_data(df_raw, country_name=""):
+def clean_data(df_raw, country_name="", save_to_file=True):
     """
     Performs comprehensive data cleaning on the solar dataset.
     Steps include:
@@ -158,19 +158,19 @@ def clean_data(df_raw, country_name=""):
     print(missing_after_cleaning[missing_after_cleaning > 0]) # Only show columns with remaining NaNs
 
     # Save the cleaned DataFrame to a CSV file
-    if country_name:
+    if save_to_file and country_name:
         # Get the directory of the current script (src/)
         current_script_dir = os.path.dirname(os.path.abspath(__file__))
         # Construct the path to the 'data' folder (one level up, then into 'data')
-        data_output_dir = os.path.join(current_script_dir, '..', 'data')# Ensure the 'data' directory exists
-
+        data_output_dir = os.path.join(current_script_dir, '..', 'data')
         # Construct the full path for the cleaned CSV
         cleaned_file_name = f"{country_name.lower().replace(' ', '_')}_clean.csv"
         cleaned_data_path = os.path.join(data_output_dir, cleaned_file_name)
-
         # Save the DataFrame, preserving the Timestamp index as a column
         df_cleaned.to_csv(cleaned_data_path, index=True)
         print(f"\nCleaned data saved to: {cleaned_data_path}")
+    elif not save_to_file:
+        print("\nSkipping file save (save_to_file=False)")
     else:
         print("\nWarning: 'country_name' not provided, skipping saving cleaned data.")
 
