@@ -14,13 +14,13 @@ To reproduce the development environment, follow these steps:
 1.  Clone the repository:
 
     ```bash
-    git clone [https://github.com/anasimos/solar-challenge-week1.git](https://github.com/anasimos/solar-challenge-week1.git) 
+    git clone https://github.com/anasimos/solar-challenge-week1.git 
     cd solar-challenge-week1
     ```
 2.  Create a virtual environment:
 
     ```bash
-    python3 -m venv .venv # For venv
+    python3 -m venv .env # For venv
     # or
     conda create -n myenv python # For conda
     ```
@@ -29,7 +29,7 @@ To reproduce the development environment, follow these steps:
     * **venv (Linux/macOS):**
 
         ```bash
-        source .venv/bin/activate
+        source .env/bin/activate
         ```
 
     * **venv (Windows):**
